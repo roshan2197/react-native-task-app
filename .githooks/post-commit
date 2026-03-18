@@ -1,0 +1,3 @@
+#!/bin/sh
+repo_root=$(git rev-parse --show-toplevel)
+powershell.exe -ExecutionPolicy Bypass -File "$repo_root/scripts/build-apk.ps1"
