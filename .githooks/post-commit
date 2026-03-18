@@ -1,3 +1,18 @@
 #!/bin/sh
+set -eu
+
 repo_root=$(git rev-parse --show-toplevel)
-powershell.exe -ExecutionPolicy Bypass -File "$repo_root/scripts/build-apk.ps1"
+os_name=$(uname -s)
+
+case "$os_name" in
+  Darwin)
+    sh "$repo_root/scripts/build-apk.sh"
+    sh "$repo_root/scripts/build-ios.sh"
+    ;;
+  MINGW*|MSYS*|CYGWIN*)
+    powershell.exe -ExecutionPolicy Bypass -File "$repo_root/scripts/build-apk.ps1"
+    ;;
+  *)
+    sh "$repo_root/scripts/build-apk.sh"
+    ;;
+esac
