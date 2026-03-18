@@ -13,7 +13,8 @@
                     "hooks:install":  "git config core.hooksPath .githooks",
                     "build:apk:sh":  "sh ./scripts/build-apk.sh",
                     "build:ios":  "sh ./scripts/build-ios.sh",
-                    "build:ios:windows":  "powershell -ExecutionPolicy Bypass -File ./scripts/build-ios.ps1"
+                    "build:ios:windows":  "powershell -ExecutionPolicy Bypass -File ./scripts/build-ios.ps1",
+                    "postcommit:sync":  "powershell -ExecutionPolicy Bypass -File ./scripts/post-commit-sync.ps1"
                 },
     "dependencies":  {
                          "@react-native/new-app-screen":  "0.84.1",
